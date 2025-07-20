@@ -51,16 +51,22 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+
 TEMPLATES = [
     {
-        ...
-        'DIRS': [BASE_DIR / 'templates'],  # अगर आपने templates अलग से रखें हैं
-        ...
-        'APP_DIRS': True,  # यह True होना चाहिए
-        ...
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],  # ये तभी जब आपने templates प्रोजेक्ट लेवल पर रखा हो
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
     },
 ]
-
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
